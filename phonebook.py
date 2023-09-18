@@ -60,3 +60,5 @@ elif selected_option == 4:
     data = (new_number, id)
     mycursor.execute(update_query, data)
     mydb.commit()
+else:
+    print("wrong input")
