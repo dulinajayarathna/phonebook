@@ -55,3 +55,4 @@ elif selected_option == 3:
     data = (id,)
     mycursor.execute(delete_query, data)
     mydb.commit()
+    
