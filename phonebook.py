@@ -1,4 +1,5 @@
 import mysql.connector
+import sys
 
 # connect to database
 mydb = mysql.connector.connect(
@@ -18,6 +19,20 @@ if selected_option == 1:
     name = input("Enter name : ")
     phone = input("Enter contact number : ")
 
+    # validate phone number
+    # 1. phone number should be 10 digits
+    # 2. phone number only contain digits
+    # 3. phone number should always start with 0
+    if len(phone)!= 10:
+        print("phone number should be 10 digits")
+        sys.exit(0)
+    if not phone.isdigit():
+        print("phone number should only contain digits")
+        sys.exit(0)
+    if not phone.startswith("0"):
+        print("phone number always should starts with o")
+        sys.exit(0)
+        
     # save to database
     insert_sql = "insert into contacts(name,phone) values(%s,%s)"
     data = (name, phone)
@@ -52,7 +67,21 @@ elif selected_option == 4:
 
     # read the new phone number to be modified
     new_number = input("Enter new phone number : ")
-       
+
+     # validate phone number
+    # 1. phone number should be 10 digits
+    # 2. phone number only contain digits
+    # 3. phone number should always start with 0
+    if len(new_number)!= 10:
+        print("phone number should be 10 digits")
+        sys.exit(0)
+    if not new_number.isdigit():
+        print("phone number should only contain digits")
+        sys.exit(0)
+    if not new_number.startswith("0"):
+        print("phone number always should starts with o")
+        sys.exit(0)
+    
     # build update query
     update_query = "update contacts set phone=%s where id = %s"
 
