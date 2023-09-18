@@ -55,4 +55,28 @@ elif selected_option == 3:
     data = (id,)
     mycursor.execute(delete_query, data)
     mydb.commit()
-    
+
+elif selected_option==4:
+    # read contact id to be edited from the user
+    id=int(input("enter contact id to be edited : " ))
+
+    # read the new phone number to be modified
+    new_number=input("Enter new phone number : ")
+
+    # connect to database
+    mydb = mysql.connector.connect(
+        user="root", host="localhost", password="Gshock@123", database="phonebook"
+    )
+    mycursor = mydb.cursor()
+
+    # build update query 
+    update_query="update contacts set phone=%s where id = %s"
+
+    # execute update
+    data=(new_number,id)
+    mycursor.execute(update_query,data)
+    mydb.commit()
+
+
+
+
